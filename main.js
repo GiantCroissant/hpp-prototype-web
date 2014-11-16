@@ -30,7 +30,17 @@ function ItemDetail(data) {
         self.linkedAddress = ko.observable(data.linkedAddress)
         self.dueDate = ko.observable(data.dueDate)
         self.instruction = ko.observable(data.instruction)
+        self.serialNumber = ko.observable(data.serialNumber)
+        self.password = ko.observable(data.password)
+
     }
+}
+
+function SerialPassword(serial, password) {
+    var self = this
+
+    self.serial = ko.observable(serial)
+    self.password = ko.observable(password)
 }
 
 // Overall viewmodel for this screen, along with initial state
@@ -61,6 +71,12 @@ function ItemExchangeViewModel() {
     })
 
     self.itemDetail = ko.observable(new ItemDetail())
+    self.serialPassword = ko.observable()
+
+    self.showSerial = function() {
+        var mappedSerialPassword = new SerialPassword(self.itemDetail.serialNumber, self.itemDetail.password)
+        self.serialPassword(mappedSerialPassword)
+    }
 
     bootcards.addPJaxHandlers = function(pjaxTarget) {
         console.log("in addpjaxhandlers function")
