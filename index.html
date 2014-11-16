@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="./vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./vendor/bootcards/dist/css/bootcards-desktop.min.css">
+
+  <script type="text/javascript" src="./vendor/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="./vendor/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="./vendor/bootcards/dist/js/bootcards.js"></script>
+  <script type="text/javascript" src="./vendor/pjax/jquery.pjax.js"></script>
+  <script type="text/javascript" src="./vendor/knockout/knockout.js"></script>
+
+</head>
+
+<body>
+
+  <!--p>First name: <strong data-bind="text: firstName"></strong></p-->
+  <!--p>Last name: <strong data-bind="text: lastName"></strong></p-->
+
+  <!--button data-bind="click: addSeat">Reserve another seat</button-->
+
+  <!--table>
+    <thead><tr>
+        <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
+    </tr></thead-->
+
+    <!-- Todo: Generate table body -->
+      <!--tbody data-bind="foreach: seats">
+        <tr>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: meal().mealName"></td>
+            <td data-bind="text: meal().price"></td>
+        </tr>    
+      </tbody>
+
+  </table-->
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand no-break-out" title="Goodponpon" href="/">Goodponpon</a>  
+            </div>
+            <button type="button" class="btn btn-default btn-back pull-left hidden" onclick="history.back()">
+                <i class="fa fa-lg fa-chevron-left"></i><span>Back</span>
+            </button>
+        </div>
+    </div>
+
+  <div class="container bootcards-container" id="main">
+      <div class="row">
+          <div class="col-sm-6 bootcards-list" id="list" data-title="Items">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                        <form>
+                            <div class="row">
+
+                                <div class="col-xs-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search Contacts...">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <a class="btn btn-primary btn-block" href="#">
+                                        <!--i class="fa fa-plus"></i-->
+                                        Search
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                  </div>
+
+                  <div class="list-group" data-bind="foreach: items">
+                        <a class="list-group-item pjax" data-bind="attr: { href: linkedAddress }">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <img src="./images/bladeSoul.png" class="img-rounded pull-left"/>
+                                    <h4 class="list-group-item-heading" data-bind="text: gameTitle"></h4>
+                                    <p class="list-group-item-text" data-bind="text: platform"></p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
+                                        <p class="list-group-item-text" data-bind="text: itemName"></p>
+                                        <p class="list-group-item-text" data-bind="text: itemTotalCount"></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="list-group-item-text">Jackpot</p>
+                                        <p class="list-group-item-text" data-bind="text: jackpotItemName"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                  </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-sm-6 bootcards-cards" id="listDetails">
+                <div id="itemCard">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <h3 class="panel-title pullleft">Item Detail</h3>
+                        </div>
+                        <div class="list-group" data-bind="with: itemDetail">
+                            <div class="list-group-item">
+                                <label data-bind="text: itemName"></label>
+                            </div>
+                            <div class="list-group-item">
+                                <button class="btn btn-default">
+                                <i class="fa fa-arrow-down"></i>
+                                Click to get
+                                </button>
+                            </div>            
+                            <div class="list-group-item">
+                                <label>
+                                <img src="./images/onePiece.png" class="img-responsive" />
+                                </label>
+                            </div>
+                            <div class="list-group-item">
+                                <label>Game Description</label>
+                                <p data-bind="text: gameDescription"></p>
+                            </div>
+                            <div class="list-group-item">
+                                <label>Link</label>
+                                <p data-bind="text: linkedAddress"></p>
+                            </div>
+                            <div class="list-group-item">
+                                <label>Item Description</label>
+                                <p data-bind="text: itemDescription"></p>
+                            </div>
+                            <div class="list-group-item">
+                                <label>Due Date</label>
+                                <p data-bind="text: dueDate"></p>
+                            </div>
+                            <div class="list-group-item">
+                                <label>Instruction</label>
+                                <p data-bind="text: instruction"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+  </div>
+
+
+  <script type="text/javascript" src="./main.js"></script>
+
+</body>
